@@ -1,6 +1,6 @@
 require('mason').setup()
 require('mason-lspconfig').setup({
-  ensure_installed = { "tsserver", "lua_ls", "eslint", "terraformls", "dockerls", "docker_compose_language_service" }
+  ensure_installed = { "tsserver", "lua_ls", "eslint", "terraformls", "dockerls", "docker_compose_language_service", "gopls", "golangci_lint_ls"}
 })
 -- Setup language servers.
 local lspconfig = require('lspconfig')
@@ -44,6 +44,16 @@ lspconfig.terraformls.setup {
 }
 
 lspconfig['dockerls'].setup {
+  capabilities = client_capabilities,
+  on_attach = on_attach
+}
+
+lspconfig.gopls.setup {
+  capabilities = client_capabilities,
+  on_attach = on_attach
+}
+
+lspconfig.golangci_lint_ls.setup {
   capabilities = client_capabilities,
   on_attach = on_attach
 }
