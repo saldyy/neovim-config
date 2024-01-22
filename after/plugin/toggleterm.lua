@@ -1,6 +1,6 @@
 require("toggleterm").setup({
   open_mapping = [[<C-t>]],
-  direction = 'horizontal'
+  direction = 'float'
 })
 
 function _G.set_terminal_keymaps()
