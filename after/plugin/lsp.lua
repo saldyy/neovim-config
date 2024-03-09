@@ -1,6 +1,8 @@
 require('mason').setup()
 require('mason-lspconfig').setup({
-  ensure_installed = { "tsserver", "lua_ls", "eslint", "terraformls", "dockerls", "docker_compose_language_service", "gopls", "golangci_lint_ls"}
+  ensure_installed = { "tsserver", "lua_ls", "eslint", "terraformls", "dockerls", "docker_compose_language_service", "gopls", "golangci_lint_ls", "templ",
+    "tailwindcss"
+  }
 })
 -- Setup language servers.
 local lspconfig = require('lspconfig')
@@ -27,6 +29,12 @@ local on_attach = function(_, _)
     vim.lsp.buf.format { async = true }
   end, opts)
 end
+
+lspconfig['tailwindcss'].setup {
+  capabilities = client_capabilities,
+  on_attach = on_attach,
+  filetypes = { "aspnetcorerazor", "astro", "astro-markdown", "blade", "clojure", "django-html", "htmldjango", "edge", "eelixir", "elixir", "ejs", "erb", "eruby", "gohtml", "gohtmltmpl", "haml", "handlebars", "hbs", "html", "html-eex", "heex", "jade", "leaf", "liquid", "markdown", "mdx", "mustache", "njk", "nunjucks", "php", "razor", "slim", "twig", "css", "less", "postcss", "sass", "scss", "stylus", "sugarss", "javascript", "javascriptreact", "reason", "rescript", "typescript", "typescriptreact", "vue", "svelte", "templ" }
+}
 
 lspconfig.tsserver.setup {
   capabilities = client_capabilities,
@@ -58,6 +66,12 @@ lspconfig.golangci_lint_ls.setup {
   on_attach = on_attach
 }
 
+lspconfig.templ.setup {
+  capabilities = client_capabilities,
+  on_attach = on_attach,
+  filetypes = {"templ"}
+}
+
 lspconfig.eslint.setup({
 	capabilities = client_capabilities,
 	flags = { debounce_text_changes = 500 },
@@ -82,3 +96,7 @@ vim.cmd([[
       \ 'whitelist': ['terraform'],
       \ })
 ]])
+
+vim.filetype.add({ extension = { templ = "templ" } })
+
+
