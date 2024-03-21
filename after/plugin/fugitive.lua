@@ -25,3 +25,7 @@ vim.api.nvim_create_user_command('Gl',function(opts)
 end,{
   nargs = "*"
 })
+
+vim.api.nvim_create_user_command('Gbl',function()
+  vim.cmd("Git blame")
+end, {})
