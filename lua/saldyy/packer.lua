@@ -7,10 +7,11 @@ return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 
+  use('nvim-lua/plenary.nvim')
+
   use {
     'nvim-telescope/telescope.nvim', tag = '0.1.2',
-    -- or                            , branch = '0.1.x',
-    requires = { { 'nvim-lua/plenary.nvim', 'BurntSushi/ripgrep', 'sharkdp/fd' } }
+    requires = { { 'BurntSushi/ripgrep', 'sharkdp/fd' } }
   }
 
   use 'navarasu/onedark.nvim'
@@ -43,7 +44,7 @@ return require('packer').startup(function(use)
     require("toggleterm").setup()
   end }
 
-  use('nvim-lua/plenary.nvim')
   use('ThePrimeagen/harpoon')
-end)
 
+  use("stevearc/conform.nvim")
+end)
