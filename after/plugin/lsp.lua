@@ -11,7 +11,7 @@ local lspconfig = require('lspconfig')
 local client_capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 local on_attach = function(client, bufnr)
-  local opts = {buffer = bufnr, remap = false}
+  local opts = { buffer = bufnr, remap = false }
   vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
   vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
   vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
@@ -72,6 +72,7 @@ lspconfig.templ.setup {
 lspconfig.eslint.setup({
   capabilities = client_capabilities,
   flags = { debounce_text_changes = 500 },
+  filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "mjs", "cjs"},
   on_attach = function(client, bufnr)
     client.server_capabilities.documentFormattingProvider = true
     if client.server_capabilities.documentFormattingProvider then
