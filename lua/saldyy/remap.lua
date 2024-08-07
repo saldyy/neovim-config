@@ -21,12 +21,13 @@ vim.keymap.set("n", "<leader>bls", '<cmd>lua require("harpoon.ui").toggle_quick_
 vim.keymap.set("n", "<leader>ba", '<cmd>lua require("harpoon.mark").add_file()<cr>')
 vim.keymap.set("n", "<leader>bn", '<cmd>lua require("harpoon.ui").nav_next()<cr>')
 vim.keymap.set("n", "<leader>bp", '<cmd>lua require("harpoon.ui").nav_prev()<cr>')
+vim.keymap.set('n', '<leader>m', '<cmd>lua require("harpoon.mark").add_file()<cr>')
 
 -- Tab control
 -- New tab
 vim.keymap.set("n", "te", ":tabedit")
-vim.keymap.set("n", "<tab>", ":tabnext<Return>", opts)
-vim.keymap.set("n", "<s-tab>", ":tabprev<Return>", opts)
+vim.keymap.set("n", "tn", ":tabnext<Return>", opts)
+vim.keymap.set("n", "tp", ":tabprev<Return>", opts)
 -- Split window
 vim.keymap.set("n", "ss", ":split<Return>", opts)
 vim.keymap.set("n", "sv", ":vsplit<Return>", opts)
@@ -39,4 +40,3 @@ vim.keymap.set("n", "<C-w><down>", "<C-w>+")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
-vim.keymap.set('n', '<leader>m', '<cmd>lua require("harpoon.mark").add_file()<cr>')
