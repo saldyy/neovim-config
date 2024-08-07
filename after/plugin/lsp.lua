@@ -2,7 +2,7 @@ require('mason').setup()
 require('mason-lspconfig').setup({
   ensure_installed = { "tsserver", "lua_ls", "eslint", "dockerls", "docker_compose_language_service",
     "gopls", "golangci_lint_ls", "templ",
-    "tailwindcss"
+    "tailwindcss", "pyright"
   }
 })
 
@@ -28,6 +28,11 @@ lspconfig['tailwindcss'].setup {
   capabilities = client_capabilities,
   on_attach = on_attach,
   filetypes = { "aspnetcorerazor", "astro", "astro-markdown", "blade", "clojure", "django-html", "htmldjango", "edge", "eelixir", "elixir", "ejs", "erb", "eruby", "gohtml", "gohtmltmpl", "haml", "handlebars", "hbs", "html", "html-eex", "heex", "jade", "leaf", "liquid", "markdown", "mdx", "mustache", "njk", "nunjucks", "php", "razor", "slim", "twig", "css", "less", "postcss", "sass", "scss", "stylus", "sugarss", "javascript", "javascriptreact", "reason", "rescript", "typescript", "typescriptreact", "vue", "svelte", "templ" }
+}
+
+lspconfig.pyright.setup {
+  capabilities = client_capabilities,
+  on_attach = on_attach,
 }
 
 lspconfig.tsserver.setup {
