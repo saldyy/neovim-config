@@ -13,9 +13,6 @@ vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("n", "*", "*zzzv")
 
 
--- Select all
-vim.keymap.set("n", "<C-a>", "gg<S-v>G")
-
 -- Harpoon keymap
 vim.keymap.set("n", "<leader>bls", '<cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>')
 vim.keymap.set("n", "<leader>ba", '<cmd>lua require("harpoon.mark").add_file()<cr>')
