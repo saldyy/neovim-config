@@ -3,7 +3,7 @@ require('mason').setup()
 require('mason-lspconfig').setup({
   ensure_installed = {
     "ts_ls", "lua_ls", "eslint", "dockerls", "docker_compose_language_service",
-    "gopls", "golangci_lint_ls", "templ", "tailwindcss", "pyright"
+    "gopls", "golangci_lint_ls", "templ", "tailwindcss", "pyright", "html",
   }
 })
 
@@ -41,7 +41,9 @@ local function setup_servers(servers)
 end
 
 -- Setup common language servers
-setup_servers({ 'ts_ls', 'lua_ls', 'dockerls', 'gopls', 'golangci_lint_ls', 'pyright', 'templ' })
+setup_servers({ 'ts_ls', 'lua_ls', 'dockerls', 'gopls', 'golangci_lint_ls', 'pyright', 'templ',
+  "html"
+})
 
 -- TailwindCSS setup with specific filetypes
 lspconfig['tailwindcss'].setup {
@@ -64,7 +66,7 @@ lspconfig.eslint.setup {
       local au_lsp = vim.api.nvim_create_augroup("eslint_lsp", { clear = true })
       vim.api.nvim_create_autocmd("BufWritePre", {
         pattern = "*",
-        callback = function() vim.lsp.buf.format({ async = false }) end,
+        -- callback = function() vim.lsp.buf.format({ async = false }) end,
         group = au_lsp,
       })
     end
