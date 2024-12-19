@@ -45,6 +45,4 @@ return require('packer').startup(function(use)
   end }
 
   use('ThePrimeagen/harpoon')
-
-  use('nvim-lua/plenary.nvim')
 end)
