@@ -34,6 +34,9 @@ vim.keymap.set("n", "<C-w><left>", "<C-w><")
 vim.keymap.set("n", "<C-w><right>", "<C-w>>")
 vim.keymap.set("n", "<C-w><up>", "<C-w>-")
 vim.keymap.set("n", "<C-w><down>", "<C-w>+")
-vim.keymap.set("n", "n", "nzzzv")
-vim.keymap.set("n", "N", "Nzzzv")
 
+-- Utilities
+-- convert all camel cases to underscore cases
+vim.keymap.set("v", "<leader>ctc", [[:s/\([a-z0-9]\)\([A-Z]\)/\1_\l\2/g<CR>]])
+
+-- abc_def_ghi
