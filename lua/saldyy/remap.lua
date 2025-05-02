@@ -40,4 +40,6 @@ vim.keymap.set("n", "<C-w><down>", "<C-w>+")
 vim.keymap.set("v", "<leader>cc", [[:s/\([a-z0-9]\)\([A-Z]\)/\1_\l\2/g<CR>]])
 vim.keymap.set("v", "<leader>cu", [[:s/_\(\w\)/\U\1/g<CR>]])
 
--- abcDefGhi
+-- Vim Sneak
+vim.keymap.set("", "f", "<Plug>Sneak_s")
+vim.keymap.set("", "F", "<Plug>Sneak_S")

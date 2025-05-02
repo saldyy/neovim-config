@@ -7,6 +7,7 @@ cmp.setup({
     expand = function(args)
       require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
     end,
+
   },
   window = {
     -- completion = cmp.config.window.bordered(),
