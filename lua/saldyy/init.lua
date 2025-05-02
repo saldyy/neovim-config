@@ -1,5 +1,5 @@
 require('saldyy.remap')
-require('saldyy.packer')
+require('saldyy.plug')
 require('saldyy.set')
 require('saldyy.macro')
 
