@@ -12,13 +12,11 @@ vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("n", "*", "*zzzv")
 
-
 -- Harpoon keymap
 vim.keymap.set("n", "<leader>bls", '<cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>')
 vim.keymap.set("n", "<leader>ba", '<cmd>lua require("harpoon.mark").add_file()<cr>')
 vim.keymap.set("n", "<leader>bn", '<cmd>lua require("harpoon.ui").nav_next()<cr>')
 vim.keymap.set("n", "<leader>bp", '<cmd>lua require("harpoon.ui").nav_prev()<cr>')
-vim.keymap.set('n', '<leader>m', '<cmd>lua require("harpoon.mark").add_file()<cr>')
 
 -- Tab control
 -- New tab
@@ -37,7 +35,7 @@ vim.keymap.set("n", "<C-w><down>", "<C-w>+")
 
 -- Utilities
 -- convert all camel cases to underscore cases
-vim.keymap.set("v", "<leader>cc", [[:s/\([a-z0-9]\)\([A-Z]\)/\1_\l\2/g<CR>]])
+vim.keymap.set("v", "<leader>cc", [[:s/\([a-z0-9]\)\([A-Z]\)/\1_\L\2/g<CR>]])
 vim.keymap.set("v", "<leader>cu", [[:s/_\(\w\)/\U\1/g<CR>]])
 
 -- Vim Sneak
