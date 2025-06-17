@@ -13,7 +13,6 @@ Plug('navarasu/onedark.nvim')
 Plug('nvim-treesitter/nvim-treesitter', { ['do'] = ':TSUpdate' })
 
 Plug('mbbill/undotree')
-Plug('tpope/vim-fugitive')
 
 Plug('williamboman/mason.nvim')
 Plug('williamboman/mason-lspconfig.nvim')
@@ -29,6 +28,8 @@ Plug('tpope/vim-surround')
 Plug('akinsho/toggleterm.nvim', { ['tag'] = '*' })
 
 Plug('ThePrimeagen/harpoon')
+
+Plug('kdheepak/lazygit.nvim')
 
 vim.call('plug#end')
 
