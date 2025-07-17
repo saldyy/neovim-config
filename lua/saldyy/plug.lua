@@ -31,6 +31,8 @@ Plug('ThePrimeagen/harpoon')
 
 Plug('kdheepak/lazygit.nvim')
 
+Plug('supermaven-inc/supermaven-nvim')
+
 vim.call('plug#end')
 
 require("toggleterm").setup()
