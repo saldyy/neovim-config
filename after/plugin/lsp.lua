@@ -1,6 +1,7 @@
 -- Initialize Mason
 require('mason').setup()
 require('mason-lspconfig').setup({
+  automatic_enable = false,
   ensure_installed = {
     "ts_ls", "lua_ls", "eslint", "dockerls", "docker_compose_language_service",
     "gopls", "golangci_lint_ls", "templ", "tailwindcss", "pyright", "html",
@@ -66,7 +67,7 @@ lspconfig.eslint.setup {
       local au_lsp = vim.api.nvim_create_augroup("eslint_lsp", { clear = true })
       vim.api.nvim_create_autocmd("BufWritePre", {
         pattern = "*",
-        callback = function () end,
+        callback = function() end,
         -- callback = function() vim.lsp.buf.format({ async = false }) end,
         group = au_lsp,
       })

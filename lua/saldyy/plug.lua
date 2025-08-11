@@ -7,6 +7,7 @@ vim.call('plug#begin', '~/.vim/plugged')
 Plug('nvim-lua/plenary.nvim')
 
 Plug('nvim-telescope/telescope.nvim', { ['tag'] = '0.1.2' })
+Plug('nvim-telescope/telescope-fzf-native.nvim', { ['do'] = 'make' })
 
 Plug('navarasu/onedark.nvim')
 
@@ -16,6 +17,7 @@ Plug('mbbill/undotree')
 
 Plug('williamboman/mason.nvim')
 Plug('williamboman/mason-lspconfig.nvim')
+
 Plug('neovim/nvim-lspconfig')
 
 Plug('hrsh7th/nvim-cmp')
@@ -31,6 +33,9 @@ Plug('ThePrimeagen/harpoon')
 
 Plug('kdheepak/lazygit.nvim')
 
+Plug('supermaven-inc/supermaven-nvim')
+
+Plug('iamcco/markdown-preview.nvim', { ['do'] = 'cd app && npx --yes yarn install' })
 Plug('supermaven-inc/supermaven-nvim')
 
 vim.call('plug#end')
