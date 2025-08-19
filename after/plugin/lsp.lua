@@ -1,16 +1,25 @@
 -- Initialize Mason
-require('mason').setup()
-require('mason-lspconfig').setup({
-  automatic_enable = false,
+require("mason").setup()
+require("mason-lspconfig").setup({
+  automatic_enable = true,
   ensure_installed = {
-    "ts_ls", "lua_ls", "eslint", "dockerls", "docker_compose_language_service",
-    "gopls", "golangci_lint_ls", "templ", "tailwindcss", "pyright", "html",
+    "ts_ls",
+    "lua_ls",
+    "eslint",
+    "dockerls",
+    "docker_compose_language_service",
+    -- "gopls",
+    -- "golangci_lint_ls",
+    "templ",
+    "tailwindcss",
+    "pyright",
+    "html",
   }
 })
 
 -- Common LSP setup
-local lspconfig = require('lspconfig')
-local client_capabilities = require('cmp_nvim_lsp').default_capabilities()
+local lspconfig = require("lspconfig")
+local client_capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 -- Common on_attach function
 local function on_attach(client, bufnr)
@@ -28,7 +37,7 @@ local function on_attach(client, bufnr)
   keymap("n", "<leader>vrr", vim.lsp.buf.references, opts)
   keymap("n", "<leader>vrn", vim.lsp.buf.rename, opts)
   keymap("i", "<C-h>", vim.lsp.buf.signature_help, opts)
-  keymap('n', '<space>f', function() vim.lsp.buf.format({ async = true }) end)
+  keymap("n", "<space>f", function() vim.lsp.buf.format({ async = true }) end)
 end
 
 -- Function to simplify LSP server setup
@@ -42,16 +51,32 @@ local function setup_servers(servers)
 end
 
 -- Setup common language servers
-setup_servers({ 'ts_ls', 'lua_ls', 'dockerls', 'gopls', 'golangci_lint_ls', 'pyright', 'templ',
-  "html"
+setup_servers({
+  "ts_ls",
+  "lua_ls",
+  "dockerls",
+  "gopls",
+  "golangci_lint_ls",
+  "pyright",
+  "templ",
+  "html",
 })
 
 -- TailwindCSS setup with specific filetypes
-lspconfig['tailwindcss'].setup {
+lspconfig["tailwindcss"].setup {
   capabilities = client_capabilities,
   on_attach = on_attach,
   filetypes = {
-    "aspnetcorerazor", "astro", "blade", "django-html", "html", "markdown", "typescriptreact", "vue", "svelte", "templ",
+    "aspnetcorerazor",
+    "astro",
+    "blade",
+    "django-html",
+    "html",
+    "markdown",
+    "typescriptreact",
+    "vue",
+    "svelte",
+    "templ",
     -- other filetypes...
   }
 }
@@ -60,7 +85,14 @@ lspconfig['tailwindcss'].setup {
 lspconfig.eslint.setup {
   capabilities = client_capabilities,
   flags = { debounce_text_changes = 500 },
-  filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "mjs", "cjs" },
+  filetypes = {
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "mjs",
+    "cjs",
+  },
   on_attach = function(client, bufnr)
     client.server_capabilities.documentFormattingProvider = true
     if client.server_capabilities.documentFormattingProvider then
@@ -74,6 +106,10 @@ lspconfig.eslint.setup {
     end
   end,
 }
+
+lspconfig.gopls.setup({})
+
+lspconfig.biome.setup({})
 
 -- Additional filetype definitions
 vim.filetype.add({ extension = { templ = "templ" } })
