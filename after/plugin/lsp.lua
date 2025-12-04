@@ -1,25 +1,24 @@
 -- Initialize Mason
 require("mason").setup()
 require("mason-lspconfig").setup({
-  automatic_enable = true,
+  automatic_enable = false,
   ensure_installed = {
     "ts_ls",
     "lua_ls",
     "eslint",
     "dockerls",
     "docker_compose_language_service",
-    -- "gopls",
-    -- "golangci_lint_ls",
+    "gopls",
+    "golangci_lint_ls",
     "templ",
     "tailwindcss",
     "pyright",
     "html",
+    "biome",
   }
 })
 
 -- Common LSP setup
-local lspconfig = require("lspconfig")
-local client_capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 -- Common on_attach function
 local function on_attach(client, bufnr)
@@ -43,12 +42,13 @@ end
 -- Function to simplify LSP server setup
 local function setup_servers(servers)
   for _, lsp in pairs(servers) do
-    lspconfig[lsp].setup {
+    vim.lsp.config(lsp, {
       capabilities = client_capabilities,
       on_attach = on_attach,
-    }
+    })
   end
 end
+
 
 -- Setup common language servers
 setup_servers({
@@ -60,10 +60,11 @@ setup_servers({
   "pyright",
   "templ",
   "html",
+  "biome",
 })
 
 -- TailwindCSS setup with specific filetypes
-lspconfig["tailwindcss"].setup {
+vim.lsp.enable("tailwindcss", {
   capabilities = client_capabilities,
   on_attach = on_attach,
   filetypes = {
@@ -77,12 +78,11 @@ lspconfig["tailwindcss"].setup {
     "vue",
     "svelte",
     "templ",
-    -- other filetypes...
   }
-}
+})
 
 -- Eslint specific setup
-lspconfig.eslint.setup {
+vim.lsp.enable("eslint", {
   capabilities = client_capabilities,
   flags = { debounce_text_changes = 500 },
   filetypes = {
@@ -105,11 +105,11 @@ lspconfig.eslint.setup {
       })
     end
   end,
-}
+})
 
-lspconfig.gopls.setup({})
+vim.lsp.enable("gopls", {})
 
-lspconfig.biome.setup({})
+vim.lsp.enable("biome", {})
 
 -- Additional filetype definitions
 vim.filetype.add({ extension = { templ = "templ" } })

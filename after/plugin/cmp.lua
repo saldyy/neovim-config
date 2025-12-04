@@ -1,5 +1,5 @@
 -- Set up nvim-cmp.
-local cmp = require'cmp'
+local cmp = require('cmp')
 
 cmp.setup({
   snippet = {
@@ -54,4 +54,3 @@ cmp.setup.cmdline(':', {
     { name = 'cmdline' }
   })
 })
-
