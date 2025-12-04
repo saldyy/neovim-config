@@ -32,6 +32,7 @@ Plug('akinsho/toggleterm.nvim', { ['tag'] = '*' })
 Plug('ThePrimeagen/harpoon')
 
 Plug('kdheepak/lazygit.nvim')
+Plug('tpope/vim-fugitive')
 
 Plug('supermaven-inc/supermaven-nvim')
 
