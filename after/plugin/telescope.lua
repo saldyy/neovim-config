@@ -32,7 +32,6 @@ local live_multigrep = function(opts)
         args,
         { "--column", "--color=never", "--no-heading", "--line-number", "--with-filename", "--smart-case", }
       }
-      print (r)
       return r
     end,
     entry_maker = make_entry.gen_from_vimgrep(opts),
@@ -54,11 +53,13 @@ telescope.setup {
     selection_strategy = "follow",
     layout_strategy = "vertical",
     layout_config = {
-      height = 0.8,
-      width = 0.9,
-      prompt_position = "bottom",
-      preview_height = 0.6
-    }
+      vertical = {
+        width = 0.8,
+        height = 0.9,
+        prompt_position = "bottom",
+        preview_cutoff = 5,
+      },
+    },
   },
   extensions = {
     fzf = {}
